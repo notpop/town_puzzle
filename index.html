@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Game</title>
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .grid-item {
+      border: 1px solid rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      font-size: 30px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="current-item">Current Item: None</div>
+  <div id="next-item">Next Item: None</div>
+  <div id="grid-container" class="grid-container">
+  </div>
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <button onclick="swapItems(0, 1)">Swap Items at 0 and 1</button>
+  <button onclick="useCrane(0)">Use Crane at 0</button>
+  <button onclick="destroyItem(0)">Destroy Item at 0</button>
+  <button onclick="holdItem(0)">Hold Item at 0</button>
+  <button onclick="placeItemFromBack(0)">Place Item from Back at 0</button>
+  <button onclick="exchangeAndPlace(0)">Exchange and Place at 0</button>
+
+  <script src="game.js"></script>
+</body>
+
+</html>

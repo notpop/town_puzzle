@@ -167,9 +167,14 @@ class Game {
       "Next Item: " + this.nextItem;
   }
 
+  // helperのwrapper
+  isFieldCellEmpty(i, j) {
+    return isFieldCellEmpty(this.field, i, j);
+  }
+
   // アイテムをフィールドに配置する関数
   placeItem(i, j) {
-    if (this.currentItem && isFieldCellEmpty(this.field, i, j)) {
+    if (this.currentItem && this.isFieldCellEmpty(i, j)) {
       this.field[i][j] = this.currentItem;
       this.currentItem = null;
       this.displayField();

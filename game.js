@@ -169,7 +169,7 @@ class Game {
 
   // アイテムをフィールドに配置する関数
   placeItem(i, j) {
-    if (this.currentItem && this.field[i][j] === null) {
+    if (this.currentItem && isFieldCellEmpty(this.field, i, j)) {
       this.field[i][j] = this.currentItem;
       this.currentItem = null;
       this.displayField();

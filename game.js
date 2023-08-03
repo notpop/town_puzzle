@@ -61,12 +61,12 @@ class Game {
 
   // フィールドを表示する
   displayField() {
-    let container = document.getElementById("grid-container");
+    const container = document.getElementById("grid-container");
     if (container.children.length === 0) {
       // 初回描画時のみマスを作成
       for (let i = 0; i < this.field.length; i++) {
         for (let j = 0; j < this.field[i].length; j++) {
-          let gridItem = document.createElement("div");
+          const gridItem = document.createElement("div");
           gridItem.className = "grid-item";
           gridItem.onclick = () => {
             this.placeItem(i, j);
@@ -78,7 +78,7 @@ class Game {
     // マスの内容とonclickイベントを更新
     for (let i = 0; i < this.field.length; i++) {
       for (let j = 0; j < this.field[i].length; j++) {
-        let gridItem = container.children[i * this.field.length + j];
+        const gridItem = container.children[i * this.field.length + j];
         gridItem.innerText = this.field[i][j] ? this.field[i][j] : "";
         gridItem.onclick = () => {
           this.placeItem(i, j);
@@ -89,9 +89,9 @@ class Game {
 
   // マージ対象となるアイテムを一つにまとめる
   mergeItems(matchingCells) {
-    let lastIndex = matchingCells.length - 1;
-    let [i, j] = matchingCells[lastIndex];
-    let item = this.field[i][j];
+    const lastIndex = matchingCells.length - 1;
+    const [i, j] = matchingCells[lastIndex];
+    const item = this.field[i][j];
 
     if (ITEM_UPGRADE_MAP[item]) {
       this.field[i][j] = ITEM_UPGRADE_MAP[item];
@@ -120,7 +120,7 @@ class Game {
     visited[i][j] = true;
     matchingCells.push([i, j]);
 
-    for (let dir of DIRECTIONS) {
+    for (const dir of DIRECTIONS) {
       this.checkMatching(
         i + dir[0],
         j + dir[1],
@@ -135,14 +135,14 @@ class Game {
 
   // 同じアイテムが連続するところを探してマージする
   checkAndMerge() {
-    let visited = Array.from({ length: FIELD_SIZE }, () =>
+    const visited = Array.from({ length: FIELD_SIZE }, () =>
       Array(FIELD_SIZE).fill(false)
     );
     for (let i = 0; i < FIELD_SIZE; i++) {
       for (let j = 0; j < FIELD_SIZE; j++) {
         if (this.field[i][j] !== null && !visited[i][j]) {
-          let matchingCells = [];
-          let isMatching = this.checkMatching(
+          const matchingCells = [];
+          const isMatching = this.checkMatching(
             i,
             j,
             this.field[i][j],
